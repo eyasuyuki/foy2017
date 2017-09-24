@@ -1,11 +1,26 @@
 Fond of the Year 2017 lank board animation
 ==========================================
 
-* Requirements
+# Requirements
 
 - GopherJS
 - GopherJS WebGL
 
-* Build
+```
+export GOPATH=~/gocode
+export PATH=~/gocode/bin:$PATH
+go get -u github.com/gopherjs/gopherjs/...
+go get -u github.com/gopherjs/webgl/...
+```
 
+# Build
+
+```
+gopherjs build
+```
+
+# Run
+
+```
+open ./index.html
 ```
