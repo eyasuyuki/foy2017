@@ -1,25 +1,41 @@
 package main
 
 import (
+	"bitbucket.org/mikehouston/three"
 	"github.com/gopherjs/gopherjs/js"
-	"github.com/gopherjs/webgl"
 )
 
 func main() {
-	document := js.Global.Get("document")
-	canvas := document.Call("createElement", "canvas")
-	canvas.Set("width", 500)
-	canvas.Set("height", 500)
-	document.Get("body").Call("appendChild", canvas)
+	scene := three.SceneFromJS(js.Global.Get("scene"))
 
-	attrs := webgl.DefaultAttributes()
-	attrs.Alpha = false
+	size := 32
+	step := 50
+	geometry := three.NewGeometry()
+	for x := 0; x < size; x++ {
+		for z := 0; z < size; z++ {
+			geometry.Vertices().Push(three.NewVector3(
+				float64(x*step-size*step/2),
+				float64(z*z-x*x),
+				float64(z*step-size*step/2),
+			))
 
-	gl, err := webgl.NewContext(canvas, attrs)
-	if err != nil {
-		js.Global.Call("alert", "Error: "+err.Error())
+			if x > 0 && z > 0 {
+				p1 := z + x*size
+				p2 := (z - 1) + x*size
+				p3 := (z - 1) + (x-1)*size
+				p4 := z + (x-1)*size
+
+				geometry.Faces().Push(three.NewFace3(p1, p2, p3))
+				geometry.Faces().Push(three.NewFace3(p3, p4, p1))
+
+				geometry.Faces().Push(three.NewFace3(p3, p2, p1))
+				geometry.Faces().Push(three.NewFace3(p1, p4, p3))
+			}
+		}
 	}
+	geometry.ComputeFaceNormals()
 
-	gl.ClearColor(0.0, 0.0, 0.0, 1)
-	gl.Clear(gl.COLOR_BUFFER_BIT)
+	material := three.NewMeshNormalMaterial()
+	mesh := three.NewMesh(geometry, material)
+	scene.Add(mesh)
 }
