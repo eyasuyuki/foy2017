@@ -7,9 +7,16 @@ Fond of the Year 2017 lank board animation
 - GopherJS WebGL
 - three (ThreeJS GopherJS bindings)
 
+## Set GOPATH
+
 ```
 export GOPATH=~/gocode
 export PATH=~/gocode/bin:$PATH
+```
+
+## Get libraries
+
+```
 go get -u github.com/gopherjs/gopherjs/...
 go get -u github.com/gopherjs/webgl/...
 go get -u bitbucket.org/mikehouston/three/...
