@@ -3702,6 +3702,8 @@ $packages["main"] = (function() {
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; attrs = $f.attrs; canvas = $f.canvas; document = $f.document; err = $f.err; gl = $f.gl; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		document = $global.document;
 		canvas = document.createElement($externalize("canvas", $String));
+		canvas.width = 500;
+		canvas.height = 500;
 		document.body.appendChild(canvas);
 		attrs = webgl.DefaultAttributes();
 		attrs.Alpha = false;
@@ -3714,7 +3716,7 @@ $packages["main"] = (function() {
 			_r = err.Error(); /* */ $s = 3; case 3: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 			$global.alert($externalize("Error: " + _r, $String));
 		/* } */ case 2:
-		gl.ClearColor(0.800000011920929, 0.30000001192092896, 0.009999999776482582, 1);
+		gl.ClearColor(0, 0, 0, 1);
 		gl.Clear($parseInt(gl.Object.COLOR_BUFFER_BIT) >> 0);
 		$s = -1; return;
 		/* */ } return; } if ($f === undefined) { $f = { $blk: main }; } $f._r = _r; $f._tuple = _tuple; $f.attrs = attrs; $f.canvas = canvas; $f.document = document; $f.err = err; $f.gl = gl; $f.$s = $s; $f.$r = $r; return $f;

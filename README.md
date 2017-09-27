@@ -16,7 +16,13 @@ go get -u github.com/gopherjs/webgl/...
 # Build
 
 ```
-gopherjs build
+gopherjs build main.go
+```
+
+or
+
+```apple js
+./build.sh
 ```
 
 # Run

@@ -8,6 +8,8 @@ import (
 func main() {
 	document := js.Global.Get("document")
 	canvas := document.Call("createElement", "canvas")
+	canvas.Set("width", 500)
+	canvas.Set("height", 500)
 	document.Get("body").Call("appendChild", canvas)
 
 	attrs := webgl.DefaultAttributes()
@@ -18,6 +20,6 @@ func main() {
 		js.Global.Call("alert", "Error: "+err.Error())
 	}
 
-	gl.ClearColor(0.8, 0.3, 0.01, 1)
+	gl.ClearColor(0.0, 0.0, 0.0, 1)
 	gl.Clear(gl.COLOR_BUFFER_BIT)
 }
