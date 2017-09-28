@@ -10,7 +10,7 @@ Fond of the Year 2017 lank board animation
 ## Set GOPATH
 
 ```
-export GOPATH=~/gocode
+export GOPATH=~/gocode:`pwd`
 export PATH=~/gocode/bin:$PATH
 ```
 
